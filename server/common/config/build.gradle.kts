@@ -1,0 +1,5 @@
+dependencies {
+    api("org.springframework.cloud:spring-cloud-starter-bootstrap")
+    api("org.springframework.cloud:spring-cloud-starter-config")
+    api("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+}

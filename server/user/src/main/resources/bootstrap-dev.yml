@@ -1,0 +1,43 @@
+spring:
+  cloud:
+    inetutils:
+      preferred-networks: 127.0.0.1
+
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/user?useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&autoReconnect=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: 1qaz2wsx
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: 1qaz2wsx
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://127.0.0.1:8082
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  global-config:
+    db-config:
+      update-strategy: ALWAYS
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+request:
+  whites:
+    - /**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/

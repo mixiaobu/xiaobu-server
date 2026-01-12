@@ -1,0 +1,28 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: oauth
+
+  profiles:
+    active: dev
+  #    active: prod
+  #    active: test
+
+  cloud:
+    config:
+      label: master
+      discovery:
+        service-id: config
+        enabled: true
+      fail-fast: true
+      retry:
+        max-attempts: 10
+        multiplier: 2
+        maxInterval: 10000
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}

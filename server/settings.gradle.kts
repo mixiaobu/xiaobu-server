@@ -1,0 +1,13 @@
+rootProject.name = "server"
+include("common:config")
+include("common:core")
+include("common:mybatis-plus")
+include("common:openfeign")
+include("common:redis")
+include("common:resource")
+include("common:web")
+include("eureka")
+include("config")
+include("oauth")
+include("user")
+include("gateway")

@@ -1,0 +1,58 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: gateway
+
+  profiles:
+    active: dev
+  #    active: prod
+  #    active: test
+
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: oauth
+              uri: lb://oauth
+              predicates:
+                - Path=/oauth/**
+              filters:
+                - StripPrefix=1
+            - id: user
+              uri: lb://user
+              predicates:
+                - Path=/user/**
+              filters:
+                - StripPrefix=1
+            - id: file
+              uri: lb://file
+              predicates:
+                - Path=/file/**
+              filters:
+                - StripPrefix=1
+            - id: welfare
+              uri: lb://welfare
+              predicates:
+                - Path=/welfare/**
+              filters:
+                - StripPrefix=1
+            - id: food
+              uri: lb://food
+              predicates:
+                - Path=/food/**
+              filters:
+                - StripPrefix=1
+            - id: xiaobu
+              uri: lb://xiaobu
+              predicates:
+                - Path=/xiaobu/**
+              filters:
+                - StripPrefix=1
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
